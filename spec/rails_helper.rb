@@ -60,4 +60,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # to see the browser while running system tests
+  # $ SHOW_BROWSER=true rspec spec/system/hello_world_spec.rb
+  config.before(:each, type: :system) do
+    driven_by ENV['SHOW_BROWSER'] ? :selenium_chrome : :selenium_chrome_headless
+  end
 end
