@@ -14,7 +14,12 @@
 FactoryBot.define do
   factory :user do
     username { Faker::Internet.username }
+    email { Faker::Internet.email }
     password { Faker::Internet.password }
+
+    factory :physician_user do
+      role { 'physician' }
+    end
 
     trait :with_name do
       first_name { "John" }
